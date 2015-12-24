@@ -19,7 +19,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    
+    <!-- 接收短信 -->
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -54,4 +54,40 @@
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
     
+    <!-- 发送短信 -->
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            android:text="To:"/>
+        <TextView
+            android:id="@+id/to" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        
+        <EditText
+            android:id="@+id/msg_input" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/send" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Send"/>
+    </LinearLayout>
 </LinearLayout>
