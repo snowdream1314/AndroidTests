@@ -1,0 +1,79 @@
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.uilayouttest.MainActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+</RelativeLayout> -->
+
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">水平排列
+    
+    <EditText 
+        android:id="@+id/edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type something"
+        android:layout_gravity="center_vertical"
+        />
+    
+    <Button 
+        android:id="@+id/button_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Send"
+        />
+    
+</LinearLayout> -->
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    ><!-- 设置stretch能进行拉伸表格，0拉伸第1列，1拉伸第2列 -->
+   
+    <TableRow>
+        <TextView 
+            android:layout_height="wrap_content"
+            android:text="Account:"
+            />
+        <EditText 
+            android:layout_height="wrap_content"
+            android:hint="Input your account"
+            />
+    </TableRow>
+    
+    <TableRow>
+        <TextView 
+            android:layout_height="wrap_content"
+            android:text="Password:"
+            />
+        <EditText 
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Input your password"
+            />
+    </TableRow>
+    
+    <TableRow>
+        <Button 
+            android:id="@+id/login"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:text="Login"
+            /><!--layout_span2表示占据2列  -->
+    </TableRow>
+</TableLayout>
