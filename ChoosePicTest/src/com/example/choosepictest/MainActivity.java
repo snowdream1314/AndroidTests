@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 	private static final int TAKE_PHOTO = 1;
 	private static final int CROP_PHOTO = 2;
 	private Button takePhoto;
+	private Button chooseFromAlbum;
 	private ImageView picture;
 	private Uri imageUri;
 	@Override
@@ -32,17 +33,17 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		picture = (ImageView) findViewById(R.id.picture);
 		takePhoto = (Button) findViewById(R.id.take_photo);
-		takePhoto.setOnClickListener(new OnClickListener(){
+		takePhoto.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v){
+			public void onClick(View v) {
 				//创建File对象，用于存储照片
 				File outputImage = new File(Environment.getExternalStorageDirectory(),"tempImage.jpg");
-				try{
-					if (outputImage.exists()){
+				try {
+					if (outputImage.exists()) {
 						outputImage.delete();
 					}
 					outputImage.createNewFile();
-				}catch (IOException e){
+				} catch (IOException e){
 					e.printStackTrace();
 				}
 				imageUri = Uri.fromFile(outputImage);
@@ -52,8 +53,34 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+		
+		//从相册中选择照片
+		chooseFromAlbum = (Button) findViewById (R.id.choose_from_album);
+		chooseFromAlbum.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				//创建File对象，用于存储选择的照片
+				File outputImage = new File(Environment.getExternalStorageDirectory(), "output_image.jpg");
+				try {
+					if (outputImage.exists()) {
+						outputImage.delete();
+					}
+					outputImage.createNewFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				imageUri = Uri.fromFile(outputImage);
+				Intent intent = new Intent ("android.intent.action.GET_CONTENT");
+				intent.setType("image/*");//限制图片类型，如：image/jpeg;image/png等
+				intent.putExtra("crop", true);//允许缩放
+				intent.putExtra("scale", true);//允许裁剪
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+				startActivityForResult(intent, CROP_PHOTO);
+			}
+		});
 	}
 	
+	//startActivityForResult 会调用onActivityResult
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
