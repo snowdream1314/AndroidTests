@@ -43,4 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Unbind service"/>
+    
+    <Button 
+        android:id="@+id/start_intent_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start intent service"/>
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button stopService;
 	private Button bindService;
 	private Button unbindService;
+	private Button startIntentService;
 	
 	private MyService.DownloadBinder downloadBinder;
 	
@@ -42,10 +44,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		stopService = (Button) findViewById(R.id.stop_service);
 		bindService = (Button) findViewById(R.id.bind_service);
 		unbindService = (Button) findViewById(R.id.stop_service);
+		startIntentService = (Button) findViewByid(R.id.start_intent_service);
 		startService.setOnClickListener(this);
 		stopService.setOnClickListener(this);
 		bindService.setOnClickListener(this);
 		unbindService.setOnClickListener(this);
+		startIntentService.setOnClickListener(this);
 		
 	}
 	
@@ -66,6 +70,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.unbind_service:
 			unbindService(connection);//解绑服务
+			break;
+		case R.id.start_intent_service:
+			//打印主线程id
+			Log.d("MainActivity", "Thread id is " + Thread.currentThread().getId());
+			Intent intentService = new Intent(this, MyIntentService.class);
+			startService(intentService);
 			break;
 		default:
 			break;

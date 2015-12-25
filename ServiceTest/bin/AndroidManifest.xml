@@ -17,6 +17,9 @@
         <service android:name=".MyService" >
         </service>
         
+        <service android:name=".MyIntentService">
+        </service>
+        
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
