@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		stopService = (Button) findViewById(R.id.stop_service);
 		bindService = (Button) findViewById(R.id.bind_service);
 		unbindService = (Button) findViewById(R.id.stop_service);
-		startIntentService = (Button) findViewByid(R.id.start_intent_service);
+		startIntentService = (Button) findViewById(R.id.start_intent_service);
 		startService.setOnClickListener(this);
 		stopService.setOnClickListener(this);
 		bindService.setOnClickListener(this);
