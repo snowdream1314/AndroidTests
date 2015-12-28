@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		lightLever = (TextView) findViewById(R.id.light_lever);
 		sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-		Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+		Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);//设置传感器类型，此处为光照传感器。加速度传感器为TYPE_ACCELEROMETER。方向传感器要结合加速度长安其和地磁传感器。
 		sensorManager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 		
 		@Override
 		public void onSensorChanged(SensorEvent event) {
-			//values数组中第一个下标值就是当前光照强度
+			//values数组中第一个下标值就是当前光照强度；如果是加速度下标分别对应X/Y/Z的加速度。
 			float value = event.values[0];
 			lightLever.setText("Current lightLever is " + value + "lx");
 		}
