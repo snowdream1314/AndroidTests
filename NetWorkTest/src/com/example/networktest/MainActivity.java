@@ -89,6 +89,9 @@ public class MainActivity extends Activity implements OnClickListener{
 					message.what = SHOW_RESPONSE;
 					//将服务器返回的结果存入Message
 					handler.sendMessage(message);
+					
+//					parseXMLWithPull(response);//解析XML
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
@@ -99,6 +102,10 @@ public class MainActivity extends Activity implements OnClickListener{
 			}
 		}).start();
 	}
+	
+//	private void parseXMLWithPull(String XMLdata) {
+//		
+//	}
 	
 	private void sendRequestWithHttpClient() {
 		//开启线程发起网络请求
